@@ -35,7 +35,30 @@ $(document).ready(function () {
 				$("#departamentoMadre").val(data["departamentoMadre"]);
 				$("#municipioMadre").val(data["municipioMadre"]);
 				
+				if(json["status"] == "1"){
+					$("#notificacion").html(getNotifCorrecta("se agrego correctamente"));
+				}else{
+					$("#notificacion").html(getNotifError("se produjo un error al agregar"));
+				}
             }
         });
 	});
+	function getNotifCorrecta(texto){
+		var textoN = "<div class=\"alert alert-success alert-dismissible \" role=\"alert\"> "
+				  +"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
+					+"<span aria-hidden=\"true\">&times;</span>"
+				  +"</button>"
+				 +" <strong>Exito!</strong> "+ texto + "."
+				+"</div>";
+				return textoN;
+	}
+	function getNotifError(){
+		var textoN = "<div class=\"alert alert-danger alert-dismissible \" role=\"alert\"> "
+				  +"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">"
+					+"<span aria-hidden=\"true\">&times;</span>"
+				  +"</button>"
+				 +" <strong>Error!</strong> "+ texto + "."
+				+"</div>";
+				return textoN;
+	}
 });
