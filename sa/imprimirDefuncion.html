@@ -1,0 +1,217 @@
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>SA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+
+    
+
+    <script>
+        function imprimirDefuncion() {
+            var cuiDefuncion = $("#cuiDefuncion").val();
+
+            $.ajax({
+                type: "POST",
+                url: "http://35.228.177.72/sa/consultarDefuncion",
+                data: {
+                'cui': cuiDefuncion
+                },
+                async: true,
+                dataType: "json"
+            }).done(function(data) {
+                if(data.status == "1"){
+                    if(data.data.length == 1){
+                        var dataDefuncion = data.data[0];
+
+                        $("#cui").val(dataDefuncion.cui);
+                        $("#nombre").val(dataDefuncion.nombre);
+                        $("#apellido").val(dataDefuncion.apellido);
+                        $("#genero").val(dataDefuncion.genero);
+                        $("#fechaNacimiento").val(dataDefuncion.fechaNacimiento);
+                        $("#pais").val(dataDefuncion.pais);
+                        $("#departamento").val(dataDefuncion.departamento);
+                        $("#municipio").val(dataDefuncion.municipio);
+                        $("#lugarNacimiento").val(dataDefuncion.lugarNacimiento);
+                        $("#estadoCivil").val(dataDefuncion.estadoCivil);
+                        $("#nombreConyugue").val(dataDefuncion.nombreConyugue);
+                        $("#apellidoConyugue").val(dataDefuncion.apellidoConyugue);
+                        $("#cuiCompareciente").val(dataDefuncion.cuiCompareciente);
+                        $("#nombreCompareciente").val(dataDefuncion.nombreCompareciente);
+                        $("#apellidoCompareciente").val(dataDefuncion.apellidoCompareciente);
+                        $("#paisCompareciente").val(dataDefuncion.paisCompareciente);
+                        $("#departamentoCompareciente").val(dataDefuncion.departamentoCompareciente);
+                        $("#municipioCompareciente").val(dataDefuncion.municipioCompareciente);
+                        $("#recidenciaCompareciente").val(dataDefuncion.recidenciaCompareciente);
+                        $("#paisDefuncion").val(dataDefuncion.paisDefuncion);
+                        $("#departamentoDefuncion").val(dataDefuncion.departamentoDefuncion);
+                        $("#lugarDefuncion").val(dataDefuncion.lugarDefuncion);
+                        $("#fechaDefuncion").val(dataDefuncion.fechaDefuncion);
+                        $("#causa").val(dataDefuncion.causa);
+                    }else{
+                        alert("CUI no encontrado en defuncion");
+                    }
+                }else{
+                    alert(data.mensaje);
+                }
+            }).fail(function() {
+                alert("Error con solicitud");
+            });	
+        };
+    </script>
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">SA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Imprimir Defunción<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container" style= "padding-top: 60px;">
+      <h1 class="mt-5">Imprimir Defunción</h1>
+      <p class="lead">
+        Formulario para imprimir una defuncion registrada en el RENAP 
+      </p>
+
+      <div>
+          <div class="form-group">
+            <label for="cuiDefuncion">CUI a Consultar</label>
+            <input type="number" class="form-control" id="cuiDefuncion" placeholder="CUI persona fallecida">
+          </div>
+
+
+
+          <button class="btn btn-primary" onclick="imprimirDefuncion()">Submit</button>
+      </div>
+      
+       <br /><br />
+       <div>
+         <div class="form-group">
+
+          <label for="cui">CUI</label>
+          <input type="text" class="form-control" id="cui" readonly/>
+
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" readonly/>
+
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" id="apellido" readonly/>
+
+          <label for="genero">Genero</label>
+          <input type="text" class="form-control" id="genero" readonly/>
+
+          <label for="fechaNacimiento">Fecha Nacimiento</label>
+          <input type="text" class="form-control" id="fechaNacimiento" readonly/>
+
+          <label for="pais">Pais</label>
+          <input type="text" class="form-control" id="pais" readonly/>
+
+          <label for="departamento">Departamento</label>
+          <input type="text" class="form-control" id="departamento" readonly/>
+
+          <label for="municipio">Municipio</label>
+          <input type="text" class="form-control" id="municipio" readonly/>
+
+          <label for="lugarNacimiento">Lugar Nacimiento</label>
+          <input type="text" class="form-control" id="lugarNacimiento" readonly/>
+
+          <label for="estadoCivil">Estado Civil</label>
+          <input type="text" class="form-control" id="estadoCivil" readonly/>
+
+          <label for="nombreConyugue">Nombre Conyugue</label>
+          <input type="text" class="form-control" id="nombreConyugue" readonly/>
+
+          <label for="apellidoConyugue">Appellido Conyugue</label>
+          <input type="text" class="form-control" id="apellidoConyugue" readonly/>
+
+          <label for="cuiCompareciente">CUI Compareciente</label>
+          <input type="text" class="form-control" id="cuiCompareciente" readonly/>
+
+          <label for="nombreCompareciente">Nombre Compareciente</label>
+          <input type="text" class="form-control" id="nombreCompareciente" readonly/>
+
+          <label for="apellidoCompareciente">Apellido Compareciente</label>
+          <input type="text" class="form-control" id="apellidoCompareciente" readonly/>
+
+          <label for="paisCompareciente">Pasi Compareciente</label>
+          <input type="text" class="form-control" id="paisCompareciente" readonly/>
+
+          <label for="departamentoCompareciente">Departamento Compareciente</label>
+          <input type="text" class="form-control" id="departamentoCompareciente" readonly/>
+
+          <label for="municipioCompareciente">Municipio Compareciente</label>
+          <input type="text" class="form-control" id="municipioCompareciente" readonly/>
+
+          <label for="recidenciaCompareciente">Recidenia Compareciente</label>
+          <input type="text" class="form-control" id="recidenciaCompareciente" readonly/>
+
+          <label for="paisDefuncion">Pais Defuncion</label>
+          <input type="text" class="form-control" id="paisDefuncion" readonly/>
+
+          <label for="departamentoDefuncion">Departamento Defuncion</label>
+          <input type="text" class="form-control" id="departamentoDefuncion" readonly/>
+
+          <label for="lugarDefuncion">Lugar Defuncion</label>
+          <input type="text" class="form-control" id="lugarDefuncion" readonly/>
+
+          <label for="fechaDefuncion">Fecha Defuncion</label>
+          <input type="text" class="form-control" id="fechaDefuncion" readonly/>
+
+          <label for="causa">Causa</label>
+          <input type="text" class="form-control" id="causa" readonly/>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+       </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Proyecto SA.</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+  
+
+</body></html>

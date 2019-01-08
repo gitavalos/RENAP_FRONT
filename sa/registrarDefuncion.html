@@ -1,0 +1,131 @@
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>SA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+  
+    <script>
+        function registrarDefuncion() {
+            var cuiDefuncion = $("#cuiDefuncion").val();
+            var cuiCompareciente = $("#cuiCompareciente").val();
+            var municipio = $("#municipio").val();
+            var lugarDefuncion = $("#lugarDefuncion").val();
+            var fechaDefuncion = $("#fechaDefuncion").val();
+            var causaMuerte = $("#causaMuerte").val();
+
+            $.ajax({
+                type: "POST",
+                url: "http://35.228.177.72/sa/registrarDefuncion",
+                data: {
+                'cui': cuiDefuncion,
+                'cuiCompareciente' : cuiCompareciente,
+                'municipio' : municipio,
+                'lugarDefuncion' :lugarDefuncion,
+                'fechaDefuncion' : fechaDefuncion,
+                'causa' : causaMuerte
+                },
+                async: true,
+                dataType: "json"
+            }).done(function(data) {
+              if(data.status == "1"){
+                alert("Registrado exitosamente");
+              }else{
+                alert(data.mensaje);
+              }
+            }).fail(function() {
+                alert("Error con solicitud");
+            });	
+        };
+    </script>
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">SA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Registrar Defunción<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container" style= "padding-top: 60px;">
+      <h1 class="mt-5">Registro de Defunción</h1>
+      <p class="lead">
+        Formulario para registro de defunción de personas en el sistema RENAP  
+      </p>
+
+      <div>
+          <div class="form-group">
+            <label for="cuiDefuncion">CUI Defunción</label>
+            <input type="number" class="form-control" id="cuiDefuncion" placeholder="CUI persona fallecida">
+          </div>
+
+          <div class="form-group">
+              <label for="cuiCompareciente">CUI Compareciente</label>
+              <input type="number" class="form-control" id="cuiCompareciente" placeholder="CUI compareciente de fallecido">
+          </div>
+
+          <div class="form-group">
+              <label for="municipio">Municipio</label>
+              <input type="number" class="form-control" id="municipio" placeholder="Codigo postal municipio">
+          </div>
+
+          <div class="form-group">
+              <label for="lugarDefuncion">Lugar Defunción</label>
+              <input type="text" class="form-control" id="lugarDefuncion" placeholder="Direccion exacta de defunción">
+          </div>
+
+          <div class="form-group">
+              <label for="fechaDefuncion">Fecha Defunción</label>
+              <input type="datetime-local" class="form-control" id="fechaDefuncion">
+          </div>
+
+          <div class="form-group">
+              <label for="causaMuerte">Causa de muerte</label>
+              <input type="text" class="form-control" id="causaMuerte"  placeholder="Descripción de causa de la muerte">
+          </div>
+
+          <button class="btn btn-primary" onclick="registrarDefuncion()">Submit</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Proyecto SA.</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+  
+
+</body></html>

@@ -1,0 +1,225 @@
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <title>SA</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+	</head>
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">SA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Imprimir Nacimiento<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Imprimir Defuncion</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link" href="#">Imprimir Matrimonio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Imprimir Divorcio</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container" style= "padding-top: 60px;">
+
+			<div class="panel panel-primary">
+      <div class="panel-heading">Nacimiento</div>
+      <div class="panel-body">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+					<label class="control-label">CUI</label>
+					<input type="text" class="form-control" name="cui" id="cui">
+					<input type="submit" id="buscar" name="buscar" class="btn btn-primary" value="buscar">
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Nombre</label>
+					<input type="text" class="form-control" name="nombre" id="nombre" readonly>
+				</div>
+			</div>
+			<div class='col-md-6'>
+               <div class="form-group">
+					<label class="control-label">Apellido</label>
+					<input type="text" class="form-control" name="apellido" id="apellido" readonly>
+               </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">genero</label>
+					<input type="text" class="form-control" name="genero" id="genero" readonly>
+				</div>
+			</div>
+			<div class='col-md-6'>
+               <div class="form-group">
+					<label class="control-label">Fecha nacimiento</label>
+					<input type="text" class="form-control" name="fechaNacimiento" id="fechaNacimiento" readonly>
+               </div>
+            </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Pais</label>
+                  <input type="text" class="form-control" name="pais" id="pais" readonly>
+               </div>
+            </div>
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Departamento</label>
+                  <input type="text" class="form-control" name="departamento" id="departamento" readonly>
+               </div>
+            </div>
+			<div class='col-md-4'>
+               <div class="form-group">
+					<label class="control-label">Municipio</label>
+					<input type="text" class="form-control" name="municipio" id="municipio" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">CUI Padre</label>
+                  <input type="text" class="form-control" name="cuiPadre" id="cuiPadre" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Nombre</label>
+                  <input type="text" class="form-control" name="nombrePadre" id="nombrePadre" readonly>
+               </div>
+            </div>
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Apellido</label>
+                  <input type="text" class="form-control" name="apellidoPadre" id="apellidoPadre" readonly>
+               </div>
+            </div>
+			<div class='col-md-4'>
+               <div class="form-group">
+					<label class="control-label">Fecha nacimiento</label>
+					<input type="text" class="form-control" name="fechaNacimientoPadre" id="fechaNacimientoPadre" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Pais</label>
+                  <input type="text" class="form-control" name="paisPadre" id="paisPadre" readonly>
+               </div>
+            </div>
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Departamento</label>
+                  <input type="text" class="form-control" name="departamentoPadre" id="departamentoPadre" readonly>
+               </div>
+            </div>
+			<div class='col-md-4'>
+               <div class="form-group">
+					<label class="control-label">Municipio</label>
+					<input type="text" class="form-control" name="municipioPadre" id="municipioPadre" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">CUI Madre</label>
+                  <input type="text" class="form-control" name="cuiMadre" id="cuiMadre" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Nombre</label>
+                  <input type="text" class="form-control" name="nombreMadre" id="nombreMadre" readonly>
+               </div>
+            </div>
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Apellido</label>
+                  <input type="text" class="form-control" name="apellidoMadre" id="apellidoMadre" readonly>
+               </div>
+            </div>
+			<div class='col-md-4'>
+               <div class="form-group">
+					<label class="control-label">Fecha nacimiento</label>
+					<input type="text" class="form-control" name="fechaNacimientoMadre" id="fechaNacimientoMadre" readonly>
+               </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Pais</label>
+                  <input type="text" class="form-control" name="paisMadre" id="paisMadre" readonly>
+               </div>
+            </div>
+			<div class="col-md-4">
+               <div class="form-group">
+                  <label class="control-label">Departamento</label>
+                  <input type="text" class="form-control" name="departamentoMadre" id="departamentoMadre" readonly>
+               </div>
+            </div>
+			<div class='col-md-4'>
+               <div class="form-group">
+					<label class="control-label">Municipio</label>
+					<input type="text" class="form-control" name="municipioMadre" id="municipioMadre" readonly>
+               </div>
+            </div>
+
+	</main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Proyecto SA.</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	
+	
+	
+	
+
+</body></html>

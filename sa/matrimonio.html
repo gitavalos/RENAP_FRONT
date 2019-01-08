@@ -1,0 +1,250 @@
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <title>SA</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+	</head>
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">SA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nacimiento<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Defuncion</a>
+            </li>
+			<li class="nav-item active">
+              <a class="nav-link" href="http://localhost/sa/imprimirmatrimonio.html"> Imprimir Matrimonio<span class="sr-only">(current)</span></a>
+            </li>
+			<li class="nav-item active">
+              <a class="nav-link" href="http://localhost/sa/matrimonio.html">Ingresar Matrimonio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Divorcio</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container" style= "padding-top: 60px;">
+		<div id= "msn"> 
+		</div>
+			<div class="panel panel-primary">
+      <div class="panel-heading">Registro Matrimonio</div>
+      <div class="panel-body">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">CUI Esposo</label>
+                  <input type="text" class="form-control" name="cuiHombre" id="cuiHombre">
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">CUI Esposa</label>
+                  <input type="text" class="form-control" name="cuiMujer" id="cuiMujer">
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6">
+				<div class="form-group">
+					<label for="depto">Departamento</label>
+					<select id = "departamento" name = "departamento" class="form-control">
+						<option value = "1000">Guatemala</option>
+						<option value = "1000">Guatemala</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="municipio">Municipio</label>
+					<select id="municipio" name="municipio" class="form-control">
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">Lugar de matrimonio</label>
+                  <input type="text" class="form-control" name="lugarMatrimonio" id="lugarMatrimonio">
+               </div>
+            </div>
+         </div>
+		 <div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="regimenMatrimonial">Regimen matrimonial</label>
+					<select id = "regimenMatrimonial" name = "regimenMatrimonial" class="form-control">
+						<option>comunidad absoluta de bienes</option>
+						<option>separacion absoluta de bienes</option>
+						<option>comunidad de gananciales</option>
+					</select>
+				</div>
+			</div>
+		 </div>
+		 <div class="row">
+			<div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label">Fecha de matrimonio</label>
+                  <input type="date" class="form-control" name="fecha" id="fecha">
+               </div>
+            </div>
+         </div>
+         <button id="ingresar" name="ingresar" class="btn btn-primary" > Ingresar </button>
+		</div>
+	</main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Proyecto SA.</span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+cargarDepartamentos();
+$('#departamento').change(function() {
+        	$('#msn').html("      ....");
+    		var valDepartamento = $('#departamento').val();
+    		if(valDepartamento == "-1"){
+    			removeOptions('municipio', {});
+                $('#msn').html("");
+    		}else{
+    			$.ajax({
+	          		type: "POST",
+	          		url: "http://35.237.73.56/sa/municipios",
+	          		data: {
+	            	'departamento': valDepartamento
+	          		},
+	          		async: true,
+	          		dataType: "json"
+	        	}).done(function(data) {
+	          		addElemento('municipio', data.data);
+	          		$('#msn').html("");
+	        	}).fail(function() {
+                    addElemento('municipio', {});
+	          		mensaje("error de servicio");
+	        	});	
+    		}
+   });
+
+
+
+$('#ingresar').on('click', function() {
+	var parametros ={
+        cuihombre:$( "input[name='cuiHombre']" ).val(),
+		cuimujer:$( "input[name='cuiMujer']" ).val(),
+		municipio:$('#municipio').val(),
+		lugarmatrimonio:$( "input[name='lugarMatrimonio']" ).val(),
+		regimenmatrimonial:$('#regimenMatrimonial').val(),
+		fechamatrimonio: $( "input[name='fecha']" ).val()
+    };
+	$("#msn").html('');
+	//"http://35.247.82.127/sa/registrarmatrimonio",
+	$.ajax({
+	    type: "POST",
+	    url: "http://35.247.82.127/sa/registrarmatrimonio",
+	    data: parametros,
+	    async: true,
+	    dataType: "json"
+	}).done(function(data, textStatus, jqXHR) {
+		if(data.status == "1"){
+			addInformacion(data.data[0]);
+		}else{
+			mensaje(data.mensaje);
+		}
+	}).fail(function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+	});
+});
+
+});
+function cargarDepartamentos(){
+	$('#msn').html("      ....");
+    		var valDepartamento = "1";
+    		if(valDepartamento == "-1"){
+    			removeOptions('departamento', {});
+                $('#msn').html("");
+    		}else{
+    			$.ajax({
+	          		type: "POST",
+	          		url: "http://35.237.73.56/sa/departamentos",
+	          		data: {
+	            	'pais': valDepartamento
+	          		},
+	          		async: true,
+	          		dataType: "json"
+	        	}).done(function(data) {
+	          		addElemento('departamento', data.data);
+	          		$('#msn').html("");
+	        	}).fail(function() {
+                    addElemento('departamento', {});
+	          		mensaje("error de servicio");
+	        	});	
+    		}
+}
+
+function addInformacion(){
+	$("#cuiHombre").val("");
+	$("#cuiMujer").val("");
+}
+
+function mensaje(m){
+	$("#msn").html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <strong>' + m + '</strong></div>');
+}
+function addElemento(elemento, jsonAreas) {
+    	var select = document.getElementById(elemento);
+    	removeOptions(elemento);
+    	for (var i = jsonAreas.length - 1; i >= 0; i--) {
+            if( ! (jsonAreas[i].nombre == null || jsonAreas[i].nombre === "") ){
+                var option = document.createElement("option");
+                option.text = jsonAreas[i].nombre;
+                option.value = jsonAreas[i].codigo;
+                select.add(option);
+            } 				
+  		}
+}
+function removeOptions(elemento) {
+    	var select = document.getElementById(elemento);
+    	var i;
+    	for(i = select.options.length - 1 ; i >= 0 ; i--)
+    	{
+        	select.remove(i);
+    	}
+}
+</script>
+
+
+</body></html>
